@@ -20,7 +20,9 @@
 ;060C-07A4: SAVER URI
 ;07A6-07FF: SEGPT
 
-
+;USED PORTS:
+;OUT: 84H 85H 86H 87H 88H 8CH
+;IN:  90H
 ;------------------RESTR------------
 entry_point:
                 di
@@ -196,14 +198,12 @@ loc_F3:
 ;00F4H:
                 jr      loc_C9
 
-loc_F6:                                 
-                                        
+loc_F6:               
                 ld      hl, (2fdbh)
                 inc     hl
                 jr      loc_106
 
 loc_FC:                                 
-                                        
                 inc     (hl)
                 jr      loc_F6
 
@@ -215,7 +215,6 @@ loc_FF:
 loc_106:                                
                 ld      (2fdbh), hl
                 jr      loc_C9
-
 loc_10B:                                
                 sub     10h
                 add     a, a
@@ -226,7 +225,6 @@ loc_10B:
                 ld      hl, 562h
                 jr      nz, loc_11E
                 ld      hl, 57Ah
-
 loc_11E:                               
                 add     hl, bc
                 ld      e, (hl)
@@ -235,7 +233,6 @@ loc_11E:
 ;------------------DISUP------------
 ;------------------CCS1-CCS12-------
                 jr      loc_CC
-
 loc_125:                                
                 ld      d, (hl)
                 ex      de, hl
@@ -326,7 +323,6 @@ loc_1A0:
                 ei
                 ret
 ;----------MON-END------------
-
 ProcessMon_1A3:                                
                                         
                 jp      PostInit_A4
@@ -340,12 +336,10 @@ ProcessMon_1A3:
                 ld      a, (2ff1h)
                 or      a
                 jr      nz, loc_202
-
 loc_1BB:                                
                                         
                 inc     hl
                 inc     hl
-
 loc_1BD:                                
                 dec     hl
                 ld      a, (2ff2h)
@@ -354,7 +348,6 @@ loc_1BD:
                 bit     3, a
                 jr      z, ProcessMon_1A3
                 jr      loc_1DC
-
 loc_1CB:                                
                 set     3, a
                 ld      (2ff2h), a
@@ -362,8 +355,7 @@ loc_1CB:
                 call    sub_380
                 or      (ix+5)
                 ld      (2feeh), a
-
-loc_1DC:                                
+loc_1DC:      
                 ld      a, (2feeh)
                 cp      (hl)
                 ld      a, (2ff2h)
@@ -451,8 +443,7 @@ loc_273:
                 ld      hl, 2FFDh
                 ld      (2fdbh), hl
 
-loc_279:                                
-                                        
+loc_279:
                 jp      loc_C9
 
 sub_27C:                                
