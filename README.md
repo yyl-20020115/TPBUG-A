@@ -8,5 +8,9 @@ Comments are copied from the BOOK.
 
 Happy hacking with your TP801 board.
 
+Compile:
+use z88dk from snap on Ubuntu to compile and build the bin file
+
+
 Best Regards,
 Yilin
